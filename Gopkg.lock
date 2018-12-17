@@ -2,6 +2,17 @@
 
 
 [[projects]]
+  digest = "1:8ec8d88c248041a6df5f6574b87bc00e7e0b493881dad2e7ef47b11dc69093b5"
+  name = "github.com/hashicorp/golang-lru"
+  packages = [
+    ".",
+    "simplelru",
+  ]
+  pruneopts = "UT"
+  revision = "20f1fb78b0740ba8c3cb143a61e86ba5c8669768"
+  version = "v0.5.0"
+
+[[projects]]
   digest = "1:bc35ac5e7bdb176249a6ed5b44e858740b28454d458bb1a4a350bea2df7b5b14"
   name = "github.com/sclevine/agouti"
   packages = [
@@ -16,9 +27,24 @@
   revision = "e3f6c97a4077ad821daab49db8172cf9f6690faf"
   version = "v3.0.0"
 
+[[projects]]
+  digest = "1:dcc5f8e4cd517d4cceca662dd7ce0f15ba27daf43468307b6fbbfdf1130f3845"
+  name = "github.com/throttled/throttled"
+  packages = [
+    ".",
+    "store/memstore",
+  ]
+  pruneopts = "UT"
+  revision = "def5708c45a0d2b2b9a3604521f3164e227d2c83"
+  version = "v2.2.4"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/sclevine/agouti"]
+  input-imports = [
+    "github.com/sclevine/agouti",
+    "github.com/throttled/throttled",
+    "github.com/throttled/throttled/store/memstore",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
