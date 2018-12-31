@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/ques0942/hyoushow-api/model"
+
 	"github.com/throttled/throttled"
 	"github.com/throttled/throttled/store/memstore"
 )
@@ -37,6 +39,15 @@ func getParam(r *http.Request, key string) (string, error) {
 		return param[0], nil
 	} else {
 		return "", fmt.Errorf("%s not found", key)
+	}
+}
+
+func determineListenAddress() string {
+	port := os.Getenv("PORT")
+	if port == "" {
+		return ":8080"
+	} else {
+		return ":" + port
 	}
 }
 
@@ -92,5 +103,5 @@ func main() {
 	limitedFunc := httpRateLimiter.RateLimit(http.HandlerFunc(handler))
 	http.Handle("/", limitedFunc)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(determineListenAddress(), nil))
 }
