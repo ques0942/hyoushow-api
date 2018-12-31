@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "postdeploy": "fc-cache -fv"
+  }
+}
